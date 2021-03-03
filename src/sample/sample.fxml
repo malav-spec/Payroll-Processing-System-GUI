@@ -5,27 +5,27 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane id="borderPane" fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SampleController">
+<BorderPane id="borderPane" fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SampleController">
    <top>
-      <TabPane prefHeight="341.0" prefWidth="768.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane prefHeight="421.0" prefWidth="768.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab text="Employee Management">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                <GridPane prefHeight="414.0" prefWidth="768.0" BorderPane.alignment="CENTER">
+                <GridPane prefHeight="431.0" prefWidth="768.0" BorderPane.alignment="CENTER">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="151.8" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="677.1999923706055" minWidth="10.0" prefWidth="616.2" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints maxHeight="54.6" minHeight="10.0" prefHeight="48.2" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="59.4" minHeight="10.0" prefHeight="53.8" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="74.39999999999999" minHeight="10.0" prefHeight="47.400000000000006" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="99.6" minHeight="10.0" prefHeight="44.599999999999994" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="68.39999999999998" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="47.19999999999999" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="44.39999999999998" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="36.19999999999999" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="59.4" minHeight="10.0" prefHeight="42.39999999999999" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="74.39999999999999" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="99.6" minHeight="10.0" prefHeight="48.400000000000006" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="58.19999999999999" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="54.60000000000002" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="48.39999999999998" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="46.80000000000001" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <Label alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="244.0" text="Name">
@@ -185,7 +185,7 @@
       </TabPane>
    </top>
     <bottom>
-        <TextArea fx:id="messageArea" prefHeight="268.0" prefWidth="768.0" BorderPane.alignment="CENTER">
+        <TextArea fx:id="messageArea" prefHeight="197.0" prefWidth="768.0" BorderPane.alignment="CENTER">
             <font>
                 <Font name="Times New Roman" size="13.0" />
             </font>
