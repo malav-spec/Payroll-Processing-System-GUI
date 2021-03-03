@@ -176,11 +176,21 @@
             </content>
 
           </Tab>
-          <Tab text="Employee Database">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
+            <Tab text="Employee Database">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <Label alignment="CENTER" layoutX="193.0" layoutY="27.0" prefHeight="48.0" prefWidth="382.0" text="Select Command from below">
+                                <font>
+                                    <Font name="Times New Roman Bold" size="25.0" />
+                                </font>
+                            </Label>
+                            <Button layoutX="248.0" layoutY="75.0" mnemonicParsing="false" text="File" />
+                            <Button layoutX="358.0" layoutY="75.0" mnemonicParsing="false" text="Print" />
+                            <Button layoutX="471.0" layoutY="75.0" mnemonicParsing="false" text="Payment" />
+                        </children></AnchorPane>
+                </content>
+            </Tab>
         </tabs>
       </TabPane>
    </top>
