@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
-import model.Date;
+import model.*;
 
 import java.time.LocalDate;
 
@@ -15,6 +15,9 @@ public class SampleController {
 
     @FXML
     public Button addButton;
+
+    @FXML
+    public ComboBox printBox;
 
     @FXML
     private TextArea messageArea;
@@ -40,12 +43,13 @@ public class SampleController {
     @FXML
     private ToggleGroup group, employeeGroup, roles;
 
+    Company company = new Company();
+
     @FXML
     public void display(ActionEvent actionEvent) { //Just for reference
         RadioButton rb = (RadioButton) group.getSelectedToggle();
         messageArea.setText(rb.getText());
         LocalDate d = dateField.getValue();
-        //messageArea.appendText(String.valueOf(d.getDayOfYear()));
         messageArea.appendText(" " + d.getDayOfMonth()); //Gives the day
         messageArea.appendText(" " + d.getYear()); //Gives year
         messageArea.appendText(" " + d.getMonthValue()); //Gives month
@@ -116,10 +120,92 @@ public class SampleController {
     @FXML
     public void addEmployee(ActionEvent event){
         if(checkValues(null)){
+
+            Profile profile = new Profile(nameField.getText(), getDepartment(), getDate());
+            RadioButton temp = (RadioButton) employeeGroup.getSelectedToggle();
+            String employeeType = temp.getText();
+
+            if(employeeType.equals("Part-time")){
+
+                Parttime parttime = new Parttime(profile, getPayRate());
+
+                if(company.add(parttime)){
+                    messageArea.appendText("Employee added.\n");
+                }
+                else{
+                    messageArea.appendText("Employee is already in the list.\n");
+                }
+            }
+
+            else if(employeeType.equals("Full-time")){
+
+                Fulltime fulltime = new Fulltime(profile, getSalary());
+                if(company.add(fulltime)){
+                    messageArea.appendText("Employee added.\n");
+                }
+                else{
+                    messageArea.appendText("Employee is already in the list.\n");
+                }
+            }
+
+            else if(employeeType.equals("Management")){
+
+                Fulltime management = new Management(profile, getSalary(), getRole());
+
+                if(company.add(management)){
+                    System.out.println("Employee added.");
+                }
+                else{
+                    System.out.println("Employee is already in the list.");
+                }
+            }
             resetFields();
-            messageArea.appendText("Employee added.\n");
         }
     }
+
+    @FXML
+    private void printByDepartment(){
+        if(company.getNumEmployee() == 0){
+            System.out.println("Employee database empty!");
+            return;
+        }
+
+        company.printByDepartment();
+    }
+
+    @FXML
+    private void printByDateHired(){
+        if(company.getNumEmployee() == 0){
+            System.out.println("Employee database empty!");
+            return;
+        }
+
+        company.printByDate();
+    }
+
+    @FXML
+    private void printEmployees(){
+        if(company.getNumEmployee() == 0){
+            System.out.println("Employee database empty!");
+            return;
+        }
+
+        company.print();
+    }
+
+    @FXML
+    public void printFunctions(ActionEvent event){
+        if(printBox.getEditor().getText().equals("Print by Date")){
+            printByDateHired();
+        }
+        else if(printBox.getEditor().getText().equals("Print by Department")){
+            printByDepartment();
+        }
+        else{
+            printEmployees();
+        }
+    }
+
     @FXML
     public boolean checkValues(ActionEvent event){
 
@@ -167,7 +253,7 @@ public class SampleController {
                 return false;
             }
 
-            if(Integer.parseInt(payrateTextField.getText()) < 0){
+            if(Double.parseDouble(payrateTextField.getText()) < 0){
                 messageArea.appendText("Pay rate cannot be negative\n");
                 return false;
             }
@@ -180,7 +266,7 @@ public class SampleController {
                  return false;
              }
 
-            if(Integer.parseInt(salaryTextField.getText()) < 0){
+            if(Double.parseDouble(salaryTextField.getText()) < 0){
                 messageArea.appendText("Salary cannot be negative.\n");
                 return false;
             }
@@ -193,7 +279,7 @@ public class SampleController {
                  return false;
              }
 
-            if(Integer.parseInt(salaryTextField.getText()) < 0){
+            if(Double.parseDouble(salaryTextField.getText()) < 0){
                 messageArea.appendText("Salary cannot be negative.\n");
                 return false;
             }
@@ -219,6 +305,51 @@ public class SampleController {
         Date date = new Date(tempDate);
 
         return date.isValid();
+    }
+
+    @FXML
+    private String getDepartment(){
+        RadioButton rb = (RadioButton) group.getSelectedToggle();
+        return rb.getText();
+    }
+
+    @FXML
+    private Date getDate(){
+        LocalDate d = dateField.getValue();
+        String tempDate = d.getMonthValue() + "/" + d.getDayOfMonth() + "/" + d.getYear();
+        Date date = new Date(tempDate);
+        return date;
+    }
+
+    @FXML
+    private double getSalary(){
+        return Double.parseDouble(salaryTextField.getText());
+    }
+
+    @FXML
+    private int getHours(){
+        return Integer.parseInt(hoursTextField.getText());
+    }
+
+    @FXML
+    private double getPayRate(){
+        return Double.parseDouble(payrateTextField.getText());
+    }
+
+    @FXML
+    private int getRole(){
+        RadioButton rb = (RadioButton) group.getSelectedToggle();
+        String management = rb.getText();
+
+        if(management.equals("Director")){
+            return 3;
+        }
+        else if(management.equals("Department Head")){
+            return 2;
+        }
+        else{
+            return 1;
+        }
     }
 
 
