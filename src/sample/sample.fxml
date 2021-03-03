@@ -7,7 +7,7 @@
 
 <BorderPane id="borderPane" fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SampleController">
    <top>
-      <GridPane prefHeight="385.0" prefWidth="768.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="414.0" prefWidth="768.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="151.8" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="677.1999923706055" minWidth="10.0" prefWidth="616.2" />
@@ -165,7 +165,7 @@
                   <Insets right="7.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" onAction="#display" text="test" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#addEmployee" prefHeight="26.0" prefWidth="88.0" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
    </top>
