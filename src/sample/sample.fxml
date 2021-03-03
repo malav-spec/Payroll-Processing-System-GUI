@@ -5,175 +5,190 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane id="borderPane" fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SampleController">
+<BorderPane id="borderPane" fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SampleController">
    <top>
-      <GridPane prefHeight="414.0" prefWidth="768.0" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="151.8" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="677.1999923706055" minWidth="10.0" prefWidth="616.2" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="54.6" minHeight="10.0" prefHeight="48.2" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="59.4" minHeight="10.0" prefHeight="53.8" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="74.39999999999999" minHeight="10.0" prefHeight="47.400000000000006" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="99.6" minHeight="10.0" prefHeight="44.599999999999994" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="68.39999999999998" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="47.19999999999999" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="44.39999999999998" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="36.19999999999999" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="244.0" text="Name">
-               <GridPane.margin>
-                  <Insets top="10.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets right="5.0" />
-               </padding>
-               <font>
-                  <Font name="Times New Roman" size="15.0" />
-               </font>
-            </Label>
-            <TextField fx:id="nameField" nodeOrientation="LEFT_TO_RIGHT" prefHeight="32.0" prefWidth="581.0" promptText="Enter employee name" GridPane.columnIndex="1">
-               <GridPane.margin>
-                  <Insets right="220.0" top="10.0" />
-               </GridPane.margin>
-               <font>
-                  <Font name="Times New Roman" size="13.0" />
-               </font>
-            </TextField>
-            <RadioButton fx:id="itButton" mnemonicParsing="false" text="IT" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="70.0" />
-               </GridPane.margin>
-               <toggleGroup>
-                  <ToggleGroup fx:id="group" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="csButton" mnemonicParsing="false" text="CS" toggleGroup="$group" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <RadioButton fx:id="eceButton" mnemonicParsing="false" text="ECE" toggleGroup="$group" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="135.0" />
-               </GridPane.margin>
-            </RadioButton>
-            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="200.0" text="Department" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Times New Roman" size="15.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets right="7.0" />
-               </GridPane.margin>
-            </Label>
-            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="205.0" text="Date" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Times New Roman" size="15.0" />
-               </font>
-               <padding>
-                  <Insets right="7.0" />
-               </padding>
-            </Label>
-            <DatePicker fx:id="dateField" prefHeight="26.0" prefWidth="213.0" promptText="Select date hired" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="214.0" text="Employee Type" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Times New Roman" size="15.0" />
-               </font>
-               <padding>
-                  <Insets right="7.0" />
-               </padding>
-            </Label>
-            <RadioButton fx:id="parttimeButton" mnemonicParsing="false" onAction="#disableOptions" text="Part-time" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <toggleGroup>
-                  <ToggleGroup fx:id="employeeGroup" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="fulltimeButton" mnemonicParsing="false" onAction="#disableOptions" text="Full-time" toggleGroup="$employeeGroup" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="90.0" />
-               </GridPane.margin>
-            </RadioButton>
-            <RadioButton fx:id="managementButton" mnemonicParsing="false" onAction="#disableOptions" text="Management" toggleGroup="$employeeGroup" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="180.0" />
-               </GridPane.margin>
-            </RadioButton>
-            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="257.0" text="Annual Salary" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Times New Roman" size="15.0" />
-               </font>
-               <padding>
-                  <Insets right="7.0" />
-               </padding>
-            </Label>
-            <TextField fx:id="salaryTextField" prefHeight="32.0" prefWidth="345.0" promptText="Enter annual salary of full time" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets right="220.0" top="10.0" />
-               </GridPane.margin>
-            </TextField>
-            <FlowPane prefHeight="193.0" prefWidth="617.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <children>
-                  <TextField fx:id="hoursTextField" promptText="Number of hours worked">
-                     <FlowPane.margin>
-                        <Insets top="7.0" />
-                     </FlowPane.margin>
-                  </TextField>
-                  <Label text="Hourly Pay Rate">
-                     <font>
-                        <Font name="Times New Roman" size="15.0" />
-                     </font>
-                     <FlowPane.margin>
-                        <Insets left="40.0" top="7.0" />
-                     </FlowPane.margin>
-                  </Label>
-                  <TextField fx:id="payrateTextField" promptText="Enter hourly pay rate">
-                     <FlowPane.margin>
-                        <Insets left="7.0" top="10.0" />
-                     </FlowPane.margin>
-                  </TextField>
-               </children>
-            </FlowPane>
-            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="157.0" text="Hours Worked" GridPane.rowIndex="5">
-               <padding>
-                  <Insets right="7.0" />
-               </padding>
-               <font>
-                  <Font name="Times New Roman" size="15.0" />
-               </font>
-            </Label>
-            <RadioButton fx:id="managerButton" mnemonicParsing="false" text="Manager" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <toggleGroup>
-                  <ToggleGroup fx:id="roles" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="deptheadButton" mnemonicParsing="false" text="Department Head" toggleGroup="$roles" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="90.0" />
-               </GridPane.margin>
-            </RadioButton>
-            <RadioButton fx:id="directorButton" mnemonicParsing="false" text="Director" toggleGroup="$roles" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="225.0" />
-               </GridPane.margin>
-            </RadioButton>
-            <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="153.0" text="Management Role" GridPane.rowIndex="6">
-               <font>
-                  <Font name="Times New Roman" size="15.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <GridPane.margin>
-                  <Insets right="7.0" />
-               </GridPane.margin>
-            </Label>
-            <Button fx:id="addButton" mnemonicParsing="false" onAction="#addEmployee" prefHeight="26.0" prefWidth="88.0" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-         </children>
-      </GridPane>
+      <TabPane prefHeight="341.0" prefWidth="768.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Employee Management">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <GridPane prefHeight="414.0" prefWidth="768.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="436.0" minWidth="10.0" prefWidth="151.8" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="677.1999923706055" minWidth="10.0" prefWidth="616.2" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="54.6" minHeight="10.0" prefHeight="48.2" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="59.4" minHeight="10.0" prefHeight="53.8" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="74.39999999999999" minHeight="10.0" prefHeight="47.400000000000006" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="99.6" minHeight="10.0" prefHeight="44.599999999999994" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="68.39999999999998" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="47.19999999999999" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="44.39999999999998" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="102.00000000000003" minHeight="10.0" prefHeight="36.19999999999999" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="244.0" text="Name">
+                            <GridPane.margin>
+                                <Insets top="10.0" />
+                            </GridPane.margin>
+                            <padding>
+                                <Insets right="5.0" />
+                            </padding>
+                            <font>
+                                <Font name="Times New Roman" size="15.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="nameField" nodeOrientation="LEFT_TO_RIGHT" prefHeight="32.0" prefWidth="581.0" promptText="Enter employee name" GridPane.columnIndex="1">
+                            <GridPane.margin>
+                                <Insets right="220.0" top="10.0" />
+                            </GridPane.margin>
+                            <font>
+                                <Font name="Times New Roman" size="13.0" />
+                            </font>
+                        </TextField>
+                        <RadioButton fx:id="itButton" mnemonicParsing="false" text="IT" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <GridPane.margin>
+                                <Insets left="70.0" />
+                            </GridPane.margin>
+                            <toggleGroup>
+                                <ToggleGroup fx:id="group" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="csButton" mnemonicParsing="false" text="CS" toggleGroup="$group" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <RadioButton fx:id="eceButton" mnemonicParsing="false" text="ECE" toggleGroup="$group" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <GridPane.margin>
+                                <Insets left="135.0" />
+                            </GridPane.margin>
+                        </RadioButton>
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="200.0" text="Department" GridPane.rowIndex="1">
+                            <font>
+                                <Font name="Times New Roman" size="15.0" />
+                            </font>
+                            <GridPane.margin>
+                                <Insets right="7.0" />
+                            </GridPane.margin>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="205.0" text="Date" GridPane.rowIndex="2">
+                            <font>
+                                <Font name="Times New Roman" size="15.0" />
+                            </font>
+                            <padding>
+                                <Insets right="7.0" />
+                            </padding>
+                        </Label>
+                        <DatePicker fx:id="dateField" prefHeight="26.0" prefWidth="213.0" promptText="Select date hired" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="214.0" text="Employee Type" GridPane.rowIndex="3">
+                            <font>
+                                <Font name="Times New Roman" size="15.0" />
+                            </font>
+                            <padding>
+                                <Insets right="7.0" />
+                            </padding>
+                        </Label>
+                        <RadioButton fx:id="parttimeButton" mnemonicParsing="false" onAction="#disableOptions" text="Part-time" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="employeeGroup" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="fulltimeButton" mnemonicParsing="false" onAction="#disableOptions" text="Full-time" toggleGroup="$employeeGroup" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <GridPane.margin>
+                                <Insets left="90.0" />
+                            </GridPane.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="managementButton" mnemonicParsing="false" onAction="#disableOptions" text="Management" toggleGroup="$employeeGroup" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <GridPane.margin>
+                                <Insets left="180.0" />
+                            </GridPane.margin>
+                        </RadioButton>
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="257.0" text="Annual Salary" GridPane.rowIndex="4">
+                            <font>
+                                <Font name="Times New Roman" size="15.0" />
+                            </font>
+                            <padding>
+                                <Insets right="7.0" />
+                            </padding>
+                        </Label>
+                        <TextField fx:id="salaryTextField" prefHeight="32.0" prefWidth="345.0" promptText="Enter annual salary of full time" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                            <GridPane.margin>
+                                <Insets right="220.0" top="10.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <FlowPane prefHeight="193.0" prefWidth="617.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                            <children>
+                                <TextField fx:id="hoursTextField" promptText="Number of hours worked">
+                                    <FlowPane.margin>
+                                        <Insets top="7.0" />
+                                    </FlowPane.margin>
+                                </TextField>
+                                <Label text="Hourly Pay Rate">
+                                    <font>
+                                        <Font name="Times New Roman" size="15.0" />
+                                    </font>
+                                    <FlowPane.margin>
+                                        <Insets left="40.0" top="7.0" />
+                                    </FlowPane.margin>
+                                </Label>
+                                <TextField fx:id="payrateTextField" promptText="Enter hourly pay rate">
+                                    <FlowPane.margin>
+                                        <Insets left="7.0" top="10.0" />
+                                    </FlowPane.margin>
+                                </TextField>
+                            </children>
+                        </FlowPane>
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="157.0" text="Hours Worked" GridPane.rowIndex="5">
+                            <padding>
+                                <Insets right="7.0" />
+                            </padding>
+                            <font>
+                                <Font name="Times New Roman" size="15.0" />
+                            </font>
+                        </Label>
+                        <RadioButton fx:id="managerButton" mnemonicParsing="false" text="Manager" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="roles" />
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="deptheadButton" mnemonicParsing="false" text="Department Head" toggleGroup="$roles" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                            <GridPane.margin>
+                                <Insets left="90.0" />
+                            </GridPane.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="directorButton" mnemonicParsing="false" text="Director" toggleGroup="$roles" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                            <GridPane.margin>
+                                <Insets left="225.0" />
+                            </GridPane.margin>
+                        </RadioButton>
+                        <Label alignment="CENTER_RIGHT" prefHeight="18.0" prefWidth="153.0" text="Management Role" GridPane.rowIndex="6">
+                            <font>
+                                <Font name="Times New Roman" size="15.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <GridPane.margin>
+                                <Insets right="7.0" />
+                            </GridPane.margin>
+                        </Label>
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addEmployee" prefHeight="26.0" prefWidth="88.0" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                    </children>
+                </GridPane>
+            </content>
+
+          </Tab>
+          <Tab text="Employee Database">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </top>
-   <bottom>
-      <TextArea fx:id="messageArea" prefHeight="168.0" prefWidth="725.0" BorderPane.alignment="CENTER">
-         <font>
-            <Font name="Times New Roman" size="13.0" />
-         </font>
-      </TextArea>
-   </bottom>
+    <bottom>
+        <TextArea fx:id="messageArea" prefHeight="268.0" prefWidth="768.0" BorderPane.alignment="CENTER">
+            <font>
+                <Font name="Times New Roman" size="13.0" />
+            </font>
+        </TextArea>
+    </bottom>
 </BorderPane>
