@@ -109,8 +109,15 @@ public class Date implements Comparable<Date> {
             return false;
         }
 
-        if(year == today.year && (month >= today.month && day > today.day )){//If date beyond today, return false
-            return false;
+        if(year == today.year){//If date beyond today, return false
+            if(month > today.month){
+                return false;
+            }
+            else if(month == today.month){
+                if(day > today.day){
+                    return false;
+                }
+            }
         }
 
         if(month == feb && day > feb_29){//Feb can't have more than 29 days at max
