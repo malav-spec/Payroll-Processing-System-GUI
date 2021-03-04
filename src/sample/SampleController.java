@@ -1,14 +1,18 @@
 package sample;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
-import model.*;
-
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+import model.*;
 
 
 public class SampleController {
@@ -237,12 +241,12 @@ public class SampleController {
 
         String employeeType = temp.getText();
 
-         if(employeeType.equals("Part-time")){
+        if(employeeType.equals("Part-time")){
 
-             if(payrateTextField.getText().equals("")){
-                 messageArea.appendText("Enter pay rate.\n");
-                 return false;
-             }
+            if(payrateTextField.getText().equals("")){
+                messageArea.appendText("Enter pay rate.\n");
+                return false;
+            }
 
             try {
                 if (!hoursTextField.getText().equals("") && Integer.parseInt(hoursTextField.getText()) < 0) {
@@ -265,12 +269,12 @@ public class SampleController {
 
         }
 
-         if(employeeType.equals("Full-time")){
+        if(employeeType.equals("Full-time")){
 
-             if(salaryTextField.getText().equals("")){
-                 messageArea.appendText("Enter salary.\n");
-                 return false;
-             }
+            if(salaryTextField.getText().equals("")){
+                messageArea.appendText("Enter salary.\n");
+                return false;
+            }
 
             try {
                 if (Double.parseDouble(salaryTextField.getText()) < 0) {
@@ -286,10 +290,10 @@ public class SampleController {
 
         else if(employeeType.equals("Management")){
 
-             if(salaryTextField.getText().equals("")){
-                 messageArea.appendText("Enter salary.\n");
-                 return false;
-             }
+            if(salaryTextField.getText().equals("")){
+                messageArea.appendText("Enter salary.\n");
+                return false;
+            }
 
             try {
                 if (Double.parseDouble(salaryTextField.getText()) < 0) {
@@ -369,6 +373,114 @@ public class SampleController {
             return 1;
         }
     }
+    @FXML
+    public void remove(){
+        RadioButton rb = (RadioButton) group.getSelectedToggle();
+        String dept = rb.getText();
+        LocalDate d = dateField.getValue();
+        String name = nameField.getText();
+        Date date = new Date(""+d.getMonthValue()+"/"+d.getDayOfMonth()+"/"+d.getYear());
+        Profile profile = new Profile(name, dept, date);
+
+        Management management = new Management(profile, 0, 0);
+        Parttime parttime = new Parttime(profile, 0);
+
+        if(!company.remove(management)){
+            if(company.remove(parttime)){
+                messageArea.appendText("Employee removed.");
+
+            }
+            else {
+                messageArea.appendText("Employee does not exist.");
+            }
+        }
+        else {
+            messageArea.appendText("Employee removed.");
+        }
 
 
+    }
+
+    @FXML
+    public void file(){
+        String path = getPath();
+        File myObj = new File(path);
+        try{
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String fileData = myReader.nextLine();
+                StringTokenizer st = new StringTokenizer(fileData,",",false);
+                while (st.hasMoreTokens()){
+                    String employeeType = st.nextToken();
+                    if(employeeType.equals("P")){
+                        partTime(st);
+                    }
+                    else if(employeeType.equals("F")){
+                        fullTime(st);
+                    }
+
+                    else if(employeeType.equals("M")){
+                        management(st);
+                    }
+                }
+            }
+            company.print();
+            myReader.close();
+        } catch (FileNotFoundException e) {
+        }
+
+    }
+
+    private String getPath() // Add exception if the user does not select any file
+    {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open File");
+        chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+        File file = chooser.showOpenDialog(new Stage());
+        String path = file.getAbsolutePath();
+        return path;
+    }
+
+    private void partTime(StringTokenizer st){
+        while (st.hasMoreTokens()){
+            String name = st.nextToken();
+            String dept = st.nextToken();
+            String dateIn = st.nextToken();
+            Date date = new Date(dateIn);
+            Double hourlyPayRate =  Double.parseDouble(st.nextToken());
+            Profile profile = new Profile(name, dept, date);
+            Parttime parttime = new Parttime(profile, hourlyPayRate);
+            company.add(parttime);
+        }
+    }
+
+    private void fullTime(StringTokenizer st){
+        while (st.hasMoreTokens()){
+            String name = st.nextToken();
+            String dept = st.nextToken();
+            String dateIn = st.nextToken();
+            Date date = new Date(dateIn);
+            Double salary =  Double.parseDouble(st.nextToken());
+            Profile profile = new Profile(name, dept, date);
+            Fulltime fulltime = new Fulltime(profile, salary);
+            company.add(fulltime);
+        }
+    }
+
+
+    private void management(StringTokenizer st) {
+        while (st.hasMoreTokens()) {
+            String name = st.nextToken();
+            String dept = st.nextToken();
+            String dateIn = st.nextToken();
+            Date date = new Date(dateIn);
+            Double salary = Double.parseDouble(st.nextToken());
+            int role = Integer.parseInt(st.nextToken());
+            Profile profile = new Profile(name, dept, date);
+            Fulltime management = new Management(profile, salary, role);
+            company.add(management);
+        }
+    }
 }
+
+
