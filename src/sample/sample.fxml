@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -172,22 +170,7 @@
                                 <Insets right="7.0" />
                             </GridPane.margin>
                         </Label>
-                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addEmployee" prefHeight="26.0" prefWidth="88.0" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <GridPane.margin>
-                              <Insets left="10.0" />
-                           </GridPane.margin></Button>
-                        <ComboBox fx:id="printBox" onAction="#printFunctions" prefWidth="150.0" promptText="Print Functions" visibleRowCount="3" GridPane.rowIndex="7">
-                           <GridPane.margin>
-                               <Insets left="20.0" right="5.0" />
-                           </GridPane.margin>
-                            <items>
-                                <FXCollections fx:factory="observableArrayList">
-                                    <String fx:id="printByDate" fx:value="Print by Date" />
-                                    <String fx:id="printByDept" fx:value="Print by Department" />
-                                    <String fx:id="printAll" fx:value="Print All" />
-                                </FXCollections>
-                            </items>
-                        </ComboBox>
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addEmployee" prefHeight="26.0" prefWidth="88.0" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                     </children>
                 </GridPane>
             </content>
