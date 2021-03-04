@@ -153,10 +153,10 @@ public class SampleController {
                 Fulltime management = new Management(profile, getSalary(), getRole());
 
                 if(company.add(management)){
-                    System.out.println("Employee added.");
+                    messageArea.appendText("Employee added.");
                 }
                 else{
-                    System.out.println("Employee is already in the list.");
+                    messageArea.appendText("Employee is already in the list.");
                 }
             }
             resetFields();
@@ -244,19 +244,25 @@ public class SampleController {
                  return false;
              }
 
-            if(!hoursTextField.getText().equals("") && Integer.parseInt(hoursTextField.getText()) < 0){
-                messageArea.appendText("Hours worked cannot be negative.\n");
-                return false;
+            try {
+                if (!hoursTextField.getText().equals("") && Integer.parseInt(hoursTextField.getText()) < 0) {
+                    messageArea.appendText("Hours worked cannot be negative.\n");
+                    return false;
+                } else if (!hoursTextField.getText().equals("") && Integer.parseInt(hoursTextField.getText()) > 100) {
+                    messageArea.appendText("Hours worked cannot be greater than 100.\n");
+                    return false;
+                }
+
+                if(Double.parseDouble(payrateTextField.getText()) < 0){
+                    messageArea.appendText("Pay rate cannot be negative\n");
+                    return false;
+                }
             }
-            else if(!hoursTextField.getText().equals("") && Integer.parseInt(hoursTextField.getText()) > 100){
-                messageArea.appendText("Hours worked cannot be greater than 100.\n");
+            catch (NumberFormatException e){
+                messageArea.appendText("Enter numbers.\n");
                 return false;
             }
 
-            if(Double.parseDouble(payrateTextField.getText()) < 0){
-                messageArea.appendText("Pay rate cannot be negative\n");
-                return false;
-            }
         }
 
          if(employeeType.equals("Full-time")){
@@ -266,8 +272,14 @@ public class SampleController {
                  return false;
              }
 
-            if(Double.parseDouble(salaryTextField.getText()) < 0){
-                messageArea.appendText("Salary cannot be negative.\n");
+            try {
+                if (Double.parseDouble(salaryTextField.getText()) < 0) {
+                    messageArea.appendText("Salary cannot be negative.\n");
+                    return false;
+                }
+            }
+            catch (NumberFormatException e){
+                messageArea.appendText("Enter numbers.\n");
                 return false;
             }
         }
@@ -279,12 +291,18 @@ public class SampleController {
                  return false;
              }
 
-            if(Double.parseDouble(salaryTextField.getText()) < 0){
-                messageArea.appendText("Salary cannot be negative.\n");
-                return false;
+            try {
+                if (Double.parseDouble(salaryTextField.getText()) < 0) {
+                    messageArea.appendText("Salary cannot be negative.\n");
+                    return false;
+                }
+                else if(roles.getSelectedToggle() == null){
+                    messageArea.appendText("Select a management role.\n");
+                    return false;
+                }
             }
-            else if(roles.getSelectedToggle() == null){
-                messageArea.appendText("Select a management role.\n");
+            catch (NumberFormatException e) {
+                messageArea.appendText("Enter numbers.\n");
                 return false;
             }
         }
