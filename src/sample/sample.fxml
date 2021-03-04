@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane id="borderPane" fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SampleController">
+<BorderPane id="borderPane" fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SampleController">
     <top>
         <TabPane prefHeight="421.0" prefWidth="768.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
@@ -85,7 +85,7 @@
                                         <Font name="Times New Roman" size="15.0" />
                                     </font>
                                 </Label>
-                                <DatePicker fx:id="dateField" prefHeight="26.0" prefWidth="213.0" promptText="Select date hired" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <DatePicker fx:id="dateField" editable="false" prefHeight="26.0" prefWidth="213.0" promptText="Select date hired" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <Label alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="244.0" text="Employee Type" GridPane.rowIndex="3">
                                     <font>
                                         <Font name="Times New Roman" size="15.0" />
@@ -179,43 +179,43 @@
                                     </GridPane.margin>
                                 </Label>
                                 <Button fx:id="addButton" mnemonicParsing="false" onAction="#addEmployee" prefHeight="26.0" prefWidth="88.0" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <GridPane.margin>
-                              <Insets left="40.0" />
-                           </GridPane.margin></Button>
-                        <ComboBox fx:id="printBox" onAction="#printFunctions" prefHeight="26.0" prefWidth="128.0" promptText="Print Functions" GridPane.rowIndex="7">
-                           <GridPane.margin>
-                              <Insets left="30.0" />
-                           </GridPane.margin>
-                            <items>
-                                <FXCollections fx:factory="observableArrayList">
-                                    <String fx:id="printall" fx:value="Print All" />
-                                    <String fx:id="printdate" fx:value="Print By Date Hired" />
-                                    <String fx:id="printdept" fx:value="Print By Department" />
-                                </FXCollections>
-                            </items>
-                        </ComboBox>
-                        <FlowPane prefHeight="46.0" prefWidth="483.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <GridPane.margin>
-                              <Insets left="160.0" />
-                           </GridPane.margin>
-                           <children>
-                              <Button fx:id="removeButton" mnemonicParsing="false" onAction="#remove" prefHeight="26.0" prefWidth="95.0" text="Remove">
-                                 <FlowPane.margin>
-                                    <Insets left="20.0" top="10.0" />
-                                 </FlowPane.margin>
-                              </Button>
-                              <Button fx:id="sethoursButton" mnemonicParsing="false" onAction="#setHours" prefHeight="26.0" prefWidth="100.0" text="Set Hours">
-                                 <FlowPane.margin>
-                                    <Insets left="50.0" top="10.0" />
-                                 </FlowPane.margin>
-                              </Button>
-                              <Button fx:id="calculateButton" mnemonicParsing="false" onAction="#calculate" prefHeight="26.0" prefWidth="93.0" text="Calculate">
-                                 <FlowPane.margin>
-                                    <Insets left="50.0" top="10.0" />
-                                 </FlowPane.margin>
-                              </Button>
-                           </children>
-                        </FlowPane>
+                                    <GridPane.margin>
+                                        <Insets left="40.0" />
+                                    </GridPane.margin></Button>
+                                <ComboBox fx:id="printBox" onAction="#printFunctions" prefHeight="26.0" prefWidth="128.0" promptText="Print Functions" GridPane.rowIndex="7">
+                                    <GridPane.margin>
+                                        <Insets left="30.0" />
+                                    </GridPane.margin>
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:id="printall" fx:value="Print All" />
+                                            <String fx:id="printdate" fx:value="Print By Date Hired" />
+                                            <String fx:id="printdept" fx:value="Print By Department" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <FlowPane prefHeight="46.0" prefWidth="483.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                    <GridPane.margin>
+                                        <Insets left="160.0" />
+                                    </GridPane.margin>
+                                    <children>
+                                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#remove" prefHeight="26.0" prefWidth="95.0" text="Remove">
+                                            <FlowPane.margin>
+                                                <Insets left="20.0" top="10.0" />
+                                            </FlowPane.margin>
+                                        </Button>
+                                        <Button fx:id="sethoursButton" mnemonicParsing="false" onAction="#setHours" prefHeight="26.0" prefWidth="100.0" text="Set Hours">
+                                            <FlowPane.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                            </FlowPane.margin>
+                                        </Button>
+                                        <Button fx:id="calculateButton" mnemonicParsing="false" onAction="#calculate" prefHeight="26.0" prefWidth="93.0" text="Calculate">
+                                            <FlowPane.margin>
+                                                <Insets left="50.0" top="10.0" />
+                                            </FlowPane.margin>
+                                        </Button>
+                                    </children>
+                                </FlowPane>
                             </children>
                         </GridPane>
                     </content>
@@ -240,7 +240,7 @@
         </TabPane>
     </top>
     <bottom>
-        <TextArea fx:id="messageArea" prefHeight="197.0" prefWidth="768.0" BorderPane.alignment="CENTER">
+        <TextArea fx:id="messageArea" editable="false" prefHeight="197.0" prefWidth="768.0" BorderPane.alignment="CENTER">
             <font>
                 <Font name="Times New Roman" size="13.0" />
             </font>
