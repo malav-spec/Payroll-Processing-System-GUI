@@ -199,10 +199,10 @@ public class SampleController {
 
     @FXML
     public void printFunctions(ActionEvent event){
-        if(printBox.getEditor().getText().equals("Print by Date")){
+        if(printBox.getEditor().getText().equals("Print By Date Hired")){
             printByDateHired();
         }
-        else if(printBox.getEditor().getText().equals("Print by Department")){
+        else if(printBox.getEditor().getText().equals("Print By Department")){
             printByDepartment();
         }
         else{
@@ -373,8 +373,48 @@ public class SampleController {
             return 1;
         }
     }
+
+    @FXML
+    public void setHours(){
+
+        if(!checkValues(null)){
+            return;
+        }
+
+        Profile profile = new Profile(nameField.getText(), getDepartment(), getDate());
+
+        Parttime part_emp = new Parttime();
+
+        part_emp.setProfile(profile); //Set profile
+        part_emp.setHours(getHours()); // Set hours
+
+        if(company.setHours(part_emp)){
+            messageArea.appendText("Working hours set.\n");
+        }
+        else{
+            messageArea.appendText("Employee not found.\n");
+        }
+    }
+
+    @FXML
+    public void calculate(){
+
+        if(company.getNumEmployee() == 0){
+            messageArea.appendText("Employee database empty.\n");
+            return;
+        }
+        company.processPayments();
+        messageArea.appendText("Calculation of employee payments done.\n");
+
+    }
+
     @FXML
     public void remove(){
+
+        if(!checkValues(null)){
+            return;
+        }
+
         RadioButton rb = (RadioButton) group.getSelectedToggle();
         String dept = rb.getText();
         LocalDate d = dateField.getValue();
@@ -387,15 +427,15 @@ public class SampleController {
 
         if(!company.remove(management)){
             if(company.remove(parttime)){
-                messageArea.appendText("Employee removed.");
+                messageArea.appendText("Employee removed.\n");
 
             }
             else {
-                messageArea.appendText("Employee does not exist.");
+                messageArea.appendText("Employee does not exist.\n");
             }
         }
         else {
-            messageArea.appendText("Employee removed.");
+            messageArea.appendText("Employee removed.\n");
         }
 
 
@@ -404,6 +444,11 @@ public class SampleController {
     @FXML
     public void file(){
         String path = getPath();
+
+        if(path == null){
+            return;
+        }
+
         File myObj = new File(path);
         try{
             Scanner myReader = new Scanner(myObj);
@@ -437,6 +482,10 @@ public class SampleController {
         chooser.setTitle("Open File");
         chooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
         File file = chooser.showOpenDialog(new Stage());
+
+        if(file == null){
+            return null;
+        }
         String path = file.getAbsolutePath();
         return path;
     }
