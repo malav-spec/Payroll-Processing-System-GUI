@@ -24,6 +24,9 @@ public class SampleController {
     public ComboBox printBox;
 
     @FXML
+    public ComboBox filebox;
+
+    @FXML
     private TextArea messageArea;
 
     @FXML
@@ -385,7 +388,7 @@ public class SampleController {
 
         Parttime part_emp = new Parttime();
 
-        part_emp.setProfile(profile); //Set profile
+        //part_emp.setProfile(profile); //Set profile
         part_emp.setHours(getHours()); // Set hours
 
         if(company.setHours(part_emp)){
@@ -443,6 +446,28 @@ public class SampleController {
 
     @FXML
     public void file(){
+        if(true){
+            fileExport();
+        }
+        else if(true){
+            fileImport();
+        }
+
+    }
+
+    private void fileExport() {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Save File");
+        File file = chooser.showSaveDialog(new Stage());
+        if(file == null){
+            return ;
+        }
+        String path = file.getAbsolutePath();
+        company.exportDatabase(path);
+    }
+
+
+    private void fileImport(){
         String path = getPath();
 
         if(path == null){
@@ -471,7 +496,8 @@ public class SampleController {
             }
             company.print();
             myReader.close();
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
         }
 
     }
@@ -531,5 +557,3 @@ public class SampleController {
         }
     }
 }
-
-
