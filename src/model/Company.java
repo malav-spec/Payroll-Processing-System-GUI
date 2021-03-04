@@ -1,4 +1,7 @@
 package model;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * This is the database class of all the employees
@@ -270,6 +273,23 @@ public class Company {
      */
     public int getNumEmployee(){
         return numEmployee;
+    }
+       
+    public void exportDatabase(String path){
+        File myObj = new File(path);
+        try {
+            FileWriter myWriter = new FileWriter(path);
+            for(int i = 0; i < numEmployee; i++)
+            {
+                myWriter.write(emplist[i].toString());
+                myWriter.write('\n');
+
+            }
+            myWriter.close();
+        }
+        catch (IOException e) {
+        }
+
     }
 }
 
