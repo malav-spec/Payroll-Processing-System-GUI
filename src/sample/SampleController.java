@@ -1,6 +1,6 @@
 package sample;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.*;  // need to remove that
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.StringTokenizer;
-import model.*;
+import model.*; // need to remove that
 
 
 public class SampleController {
@@ -24,7 +24,7 @@ public class SampleController {
     public ComboBox printBox;
 
     @FXML
-    public ComboBox filebox;
+    public ComboBox fileBox;
 
     @FXML
     private TextArea messageArea;
@@ -202,10 +202,10 @@ public class SampleController {
 
     @FXML
     public void printFunctions(ActionEvent event){
-        if(printBox.getEditor().getText().equals("Print By Date Hired")){
+        if(printBox.getValue().equals("Print By Date Hired")){
             printByDateHired();
         }
-        else if(printBox.getEditor().getText().equals("Print By Department")){
+        else if(printBox.getValue().equals("Print By Department")){
             printByDepartment();
         }
         else{
@@ -446,10 +446,10 @@ public class SampleController {
 
     @FXML
     public void file(){
-        if(true){
+        if(fileBox.getValue().equals("Export")){
             fileExport();
         }
-        else if(true){
+        else if(fileBox.getValue().equals("Import")){
             fileImport();
         }
 

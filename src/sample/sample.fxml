@@ -230,7 +230,14 @@
                                         <Font name="Times New Roman Bold" size="25.0" />
                                     </font>
                                 </Label>
-                                <Button layoutX="232.0" layoutY="75.0" mnemonicParsing="false" onAction="#file" prefHeight="26.0" prefWidth="68.0" text="File" AnchorPane.leftAnchor="200.0" />
+                                <ComboBox layoutX="232.0" layoutY="75.0" fx:id="fileBox" onAction="#file" prefHeight="26.0" prefWidth="68.0"  promptText="File" AnchorPane.leftAnchor="200.0">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:id="import" fx:value="Import" />
+                                            <String fx:id="export" fx:value="Export" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
                                 <Button layoutX="358.0" layoutY="75.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Print" AnchorPane.leftAnchor="330.0" />
                                 <Button layoutX="471.0" layoutY="75.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" text="Payment" AnchorPane.leftAnchor="450.0" />
                             </children></AnchorPane>
