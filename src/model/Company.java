@@ -156,23 +156,19 @@ public class Company {
     /**
      * Prints the database of the employees in its current order
      * @author Herik Patel anf Malav Doshi
+     * @return Returns the array of employees
      */
-    public void print() {
-        System.out.println("--Printing Earning statements for all employees--");
-        int i;
-        for(i = 0; i < numEmployee; i++){
-            System.out.println(emplist[i].toString());
-        }
+    public Employee[] print() {
+        return emplist;
     } //print earning statements for all employees
 
     /**
      *Prints the earning statement of the employees in the order of their department
      * @author Malav Doshi and Herik Patel
+     * @return Returns the array of employees sorted by Department
      */
-    public void printByDepartment() {
+    public Employee[] printByDepartment() {
         int i,j;
-
-        System.out.println("--Printing earning statements by department--");
 
         for(i = 0; i < numEmployee - 1; i++){
 
@@ -188,21 +184,18 @@ public class Company {
             }
         }
 
-        for(i = 0; i < numEmployee; i++){
-            System.out.println(emplist[i].toString());
-        }
+        return emplist;
     } //print earning statements by department
 
     /**
      *Prints the earning statement of the employees in the order of their date hired
      * @author Malav Doshi and Herik Patel
+     * @return Returns the array of employees sroted by Date hired
      */
-    public void printByDate() {
-        emplist=sortedarray();
-        System.out.println("--Printing earning statements by date hired--");
-        for(int i = 0; i < numEmployee; i++){
-            System.out.println(emplist[i].toString());
-        }
+    public Employee[] printByDate() {
+
+        emplist = sortedarray();
+        return emplist;
     }
     /**
      * Used to sort the Employee array by date
