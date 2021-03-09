@@ -20,40 +20,71 @@ import model.*;
 
 public class SampleController {
 
+    /**
+     *
+     */
     @FXML
     public Button addButton;
 
+    /**
+     *
+     */
     @FXML
-    public ComboBox printBox;
+    private ComboBox printBox;
 
+    /**
+     *
+     */
     @FXML
-    public ComboBox fileBox;
+    private ComboBox fileBox;
 
+    /**
+     *
+     */
     @FXML
     private TextArea messageArea;
 
+    /**
+     *
+     */
     @FXML
     private TextField nameField;
 
+    /**
+     *
+     */
     @FXML
     private RadioButton parttimeButton, fulltimeButton, managementButton;
 
+    /**
+     *
+     */
     @FXML
     private TextField salaryTextField, hoursTextField, payrateTextField;
 
+    /**
+     *
+     */
     @FXML
     private RadioButton managerButton, deptheadButton, directorButton;
 
+    /**
+     *
+     */
     @FXML
     private DatePicker dateField;
 
-    @FXML
-    private RadioButton eceButton, csButton, itButton;
-
+    /**
+     *
+     */
     @FXML
     private ToggleGroup group, employeeGroup, roles;
 
+    /**
+     *
+     */
     Company company = new Company();
+
 
     @FXML
     public void display(ActionEvent actionEvent) { //Just for reference
@@ -66,6 +97,10 @@ public class SampleController {
         messageArea.appendText(" " + nameField.getText());
     }
 
+    /**
+     * Disables fields according to selection of employee type
+     * @param event Not used
+     */
     @FXML
     public void disableOptions(ActionEvent event){
         RadioButton temp = (RadioButton) employeeGroup.getSelectedToggle();
@@ -99,6 +134,9 @@ public class SampleController {
         }
     }
 
+    /**
+     * Resets all the fields to be abled
+     */
     @FXML
     public void resetFields(){
 
@@ -127,6 +165,10 @@ public class SampleController {
         directorButton.setDisable(false);
     }
 
+    /**
+     * Add the employee to the database
+     * @param event Not used
+     */
     @FXML
     public void addEmployee(ActionEvent event){
         if(checkValues(null)){
@@ -173,6 +215,9 @@ public class SampleController {
         }
     }
 
+    /**
+     * Prints the database sorted by department
+     */
     @FXML
     private void printByDepartment(){
         if(company.getNumEmployee() == 0){
@@ -189,6 +234,9 @@ public class SampleController {
         }
     }
 
+    /**
+     * Prints the database sorted by date hired
+     */
     @FXML
     private void printByDateHired(){
         if(company.getNumEmployee() == 0){
@@ -204,6 +252,9 @@ public class SampleController {
         }
     }
 
+    /**
+     * Prints the employee database
+     */
     @FXML
     private void printEmployees(){
         if(company.getNumEmployee() == 0){
@@ -220,8 +271,13 @@ public class SampleController {
         }
     }
 
+    /**
+     * Function associated with the ComboBox for Print functions
+     * @param event
+     */
     @FXML
     public void printFunctions(ActionEvent event){
+
         if(printBox.getValue().equals("Print By Date Hired")){
             printByDateHired();
         }
@@ -233,6 +289,11 @@ public class SampleController {
         }
     }
 
+    /**
+     * Checks if the input fields are valid
+     * @param event Not used
+     * @return False if there are any invalid inputs. True otherwise
+     */
     @FXML
     public boolean checkValues(ActionEvent event){
 
@@ -337,6 +398,10 @@ public class SampleController {
         return true;
     }
 
+    /**
+     * Checks if the date field is valid
+     * @return True if date is valid, False otherwise
+     */
     @FXML
     public boolean checkDate(){
         LocalDate d = dateField.getValue();
@@ -352,12 +417,20 @@ public class SampleController {
         return date.isValid();
     }
 
+    /**
+     * Get the department of employee
+     * @return Employee department
+     */
     @FXML
     private String getDepartment(){
         RadioButton rb = (RadioButton) group.getSelectedToggle();
         return rb.getText();
     }
 
+    /**
+     * Get the date hired of employee
+     * @return date hired
+     */
     @FXML
     private Date getDate(){
         LocalDate d = dateField.getValue();
@@ -366,21 +439,37 @@ public class SampleController {
         return date;
     }
 
+    /**
+     * Get employee's salary
+     * @return Salary of employee
+     */
     @FXML
     private double getSalary(){
         return Double.parseDouble(salaryTextField.getText());
     }
 
+    /**
+     * Get the hours worked of part time employee
+     * @return Hours worked
+     */
     @FXML
     private int getHours(){
         return Integer.parseInt(hoursTextField.getText());
     }
 
+    /**
+     * Get pay rate of part time employee
+     * @return pay rate of employee
+     */
     @FXML
     private double getPayRate(){
         return Double.parseDouble(payrateTextField.getText());
     }
 
+    /**
+     * Get the management role of employees
+     * @return Management role
+     */
     @FXML
     private int getRole(){
         RadioButton rb = (RadioButton) group.getSelectedToggle();
@@ -397,6 +486,9 @@ public class SampleController {
         }
     }
 
+    /**
+     * Set the hours of part time employee
+     */
     @FXML
     public void setHours(){
 
@@ -419,6 +511,9 @@ public class SampleController {
         }
     }
 
+    /**
+     * Calculates the payments of all the employees
+     */
     @FXML
     public void calculate(){
 
@@ -431,6 +526,9 @@ public class SampleController {
 
     }
 
+    /**
+     * Removes the employee from the database
+     */
     @FXML
     public void remove(){
 
@@ -464,6 +562,9 @@ public class SampleController {
 
     }
 
+    /**
+     *
+     */
     @FXML
     public void file(){
         if(fileBox.getValue().equals("Export")){
@@ -475,6 +576,9 @@ public class SampleController {
 
     }
 
+    /**
+     *
+     */
     private void fileExport() {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Save File");
@@ -487,6 +591,9 @@ public class SampleController {
     }
 
 
+    /**
+     *
+     */
     private void fileImport(){
         String path = getPath();
 
@@ -522,6 +629,10 @@ public class SampleController {
 
     }
 
+    /**
+     *
+     * @return
+     */
     private String getPath() // Add exception if the user does not select any file
     {
         FileChooser chooser = new FileChooser();
@@ -536,6 +647,10 @@ public class SampleController {
         return path;
     }
 
+    /**
+     *
+     * @param st
+     */
     private void partTime(StringTokenizer st){
         while (st.hasMoreTokens()){
             String name = st.nextToken();
@@ -549,6 +664,10 @@ public class SampleController {
         }
     }
 
+    /**
+     *
+     * @param st
+     */
     private void fullTime(StringTokenizer st){
         while (st.hasMoreTokens()){
             String name = st.nextToken();
@@ -563,6 +682,10 @@ public class SampleController {
     }
 
 
+    /**
+     *
+     * @param st
+     */
     private void management(StringTokenizer st) {
         while (st.hasMoreTokens()) {
             String name = st.nextToken();

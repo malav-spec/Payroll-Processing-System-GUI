@@ -267,7 +267,10 @@ public class Company {
     public int getNumEmployee(){
         return numEmployee;
     }
-       
+
+    /**
+     * @param path The path of the file where the database is to be exported
+     */
     public void exportDatabase(String path){
         File myObj = new File(path);
         try {
