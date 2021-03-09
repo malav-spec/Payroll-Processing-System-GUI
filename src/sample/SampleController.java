@@ -10,12 +10,18 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import model.Company;
+import model.Fulltime;
+import model.Parttime;
+import model.Profile;
+import model.Employee;
+import model.Management;
+import model.Date;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.StringTokenizer;
-import model.*;
 
 
 public class SampleController {
@@ -85,7 +91,7 @@ public class SampleController {
      */
     Company company = new Company();
 
-
+// need to remove method redundant
     @FXML
     public void display(ActionEvent actionEvent) { //Just for reference
         RadioButton rb = (RadioButton) group.getSelectedToggle();
@@ -563,7 +569,7 @@ public class SampleController {
     }
 
     /**
-     *
+     * Used to check user response whether a user wants to import or export the file
      */
     @FXML
     public void file(){
@@ -577,7 +583,7 @@ public class SampleController {
     }
 
     /**
-     *
+     * Exports the Employee data to a file. Uses file chooser to select or make the file.
      */
     private void fileExport() {
         FileChooser chooser = new FileChooser();
@@ -592,7 +598,7 @@ public class SampleController {
 
 
     /**
-     *
+     *Imports data from a file and stores it to the Employee array
      */
     private void fileImport(){
         String path = getPath();
@@ -630,8 +636,8 @@ public class SampleController {
     }
 
     /**
-     *
-     * @return
+     * Implements file chooser to select file and return its path
+     * @return Path of the file which we want to import
      */
     private String getPath() // Add exception if the user does not select any file
     {
@@ -648,8 +654,8 @@ public class SampleController {
     }
 
     /**
-     *
-     * @param st
+     * Adds part time employee to the Employee array
+     * @param st String Tokenizer which is used to separate the stored string value using particular delim
      */
     private void partTime(StringTokenizer st){
         while (st.hasMoreTokens()){
@@ -665,8 +671,8 @@ public class SampleController {
     }
 
     /**
-     *
-     * @param st
+     * Adds full time employee to the Employee array
+     * @param st String Tokenizer which is used to separate the stored string value using particular delim
      */
     private void fullTime(StringTokenizer st){
         while (st.hasMoreTokens()){
@@ -683,8 +689,8 @@ public class SampleController {
 
 
     /**
-     *
-     * @param st
+     * Adds Management level employee to the Employee array
+     * @param st String Tokenizer which is used to separate the stored string value using particular delim
      */
     private void management(StringTokenizer st) {
         while (st.hasMoreTokens()) {
