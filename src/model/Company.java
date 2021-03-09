@@ -18,12 +18,20 @@ public class Company {
      * Integer value to keep track length of emplist
      */
     private int numEmployee;
-
+    /**
+     * Used to increase array size by 4
+     */
+    private static final int INCREASE_SIZE = 4;
+    /**
+     * To signify not found using find method
+     */
+    private static final int NOT_FOUND = -1;
     /**
      * Constructor which is used to instantiate emplist array which stores Employee data
      */
+
     public Company(){
-        emplist = new Employee[4];
+        emplist = new Employee[INCREASE_SIZE];
         numEmployee = 0;
     }
 
@@ -48,7 +56,7 @@ public class Company {
      */
     private void grow() {
 
-        Employee[] temp = new Employee[emplist.length + 4]; //Declare and initialize a temp array of length +4 than original one
+        Employee[] temp = new Employee[emplist.length + INCREASE_SIZE]; //Declare and initialize a temp array of length +4 than original one
         int i;
 
         for(i=0;i < emplist.length;i++){
@@ -96,8 +104,6 @@ public class Company {
      */
     public boolean remove(Employee employee) {//maintain the original sequence
 
-        int NOT_FOUND = -1;
-
         int index = find(employee);
 
         if(index == NOT_FOUND){
@@ -127,7 +133,6 @@ public class Company {
 
     public boolean setHours(Employee employee) { //set working hours for a part time
 
-        int NOT_FOUND = -1;
         int index = find(employee);
 
         if(index == NOT_FOUND){
@@ -146,9 +151,8 @@ public class Company {
      *This is used to calculate the payments for each employee in the database
      */
     public void processPayments() { //process payments for all employees
-        int i;
 
-        for(i = 0; i < numEmployee; i++){
+        for(int i = 0; i < numEmployee; i++){
             emplist[i].calculatePayment();
         }
     }
@@ -168,11 +172,11 @@ public class Company {
      * @return Returns the array of employees sorted by Department
      */
     public Employee[] printByDepartment() {
-        int i,j;
 
-        for(i = 0; i < numEmployee - 1; i++){
 
-            for(j = i + 1; j < numEmployee; j++){
+        for(int i = 0; i < numEmployee - 1; i++){
+
+            for(int j = i + 1; j < numEmployee; j++){
 
                 if(emplist[i].getProfile().getDepartment().compareTo(emplist[j].getProfile().getDepartment()) > 0){
 
@@ -190,7 +194,7 @@ public class Company {
     /**
      *Prints the earning statement of the employees in the order of their date hired
      * @author Malav Doshi and Herik Patel
-     * @return Returns the array of employees sroted by Date hired
+     * @return Returns the array of employees sorted by Date hired
      */
     public Employee[] printByDate() {
 
@@ -269,9 +273,15 @@ public class Company {
     }
 
     /**
+     * Writes data from Employee array to a text file
      * @param path The path of the file where the database is to be exported
      */
     public void exportDatabase(String path){
+
+        if(path == null){
+            return;
+        }
+
         File myObj = new File(path);
         try {
             FileWriter myWriter = new FileWriter(path);
