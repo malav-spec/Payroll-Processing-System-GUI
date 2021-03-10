@@ -27,67 +27,64 @@ import java.util.StringTokenizer;
 public class SampleController {
 
     /**
-     *
+     * Reference to Add button
      */
     @FXML
     public Button addButton;
 
     /**
-     *
+     * Reference to Print functions Combobox
      */
     @FXML
     private ComboBox printBox;
 
     /**
-     *
+     * Reference to the File combobox
      */
     @FXML
     private ComboBox fileBox;
 
     /**
-     *
+     * Reference for the Text Area where all the messages are displayed
      */
     @FXML
     private TextArea messageArea;
 
     /**
-     *
+     * Reference to the Text field for Name
      */
     @FXML
     private TextField nameField;
 
-    /**
-     *
-     */
-    @FXML
-    private RadioButton parttimeButton, fulltimeButton, managementButton;
+//    @FXML
+//    private RadioButton parttimeButton, fulltimeButton, managementButton;
 
     /**
-     *
+     * Reference to the Text field of salary, hours and payrate respectively
      */
     @FXML
     private TextField salaryTextField, hoursTextField, payrateTextField;
 
     /**
-     *
+     * Reference to the Radio Buttons of department
      */
     @FXML
     private RadioButton managerButton, deptheadButton, directorButton;
 
     /**
-     *
+     * Reference to the Date picker in date field
      */
     @FXML
     private DatePicker dateField;
 
     /**
-     *
+     * Reference to the Toogle groups for employee type, department and Manager roles
      */
     @FXML
     private ToggleGroup group, employeeGroup, roles;
 
     /**
-     *
+     * A company object where the database is stored
      */
     Company company = new Company();
 
