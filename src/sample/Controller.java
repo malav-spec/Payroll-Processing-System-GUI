@@ -200,7 +200,7 @@ public class Controller {
                 Fulltime management = new Management(profile, getSalary(), getRole());
 
                 if(company.add(management)){
-                    messageArea.appendText("Employee added.");
+                    messageArea.appendText("Employee added.\n");
                 }
                 else{
                     messageArea.appendText("Employee is already in the list.");
@@ -527,6 +527,11 @@ public class Controller {
     @FXML
     public void remove(){
 
+        if(company.getNumEmployee() == 0){
+            messageArea.appendText("Employee database empty!\n");
+            return;
+        }
+
         if(!checkValues(null)){
             return;
         }
@@ -579,6 +584,7 @@ public class Controller {
         chooser.setTitle("Save File");
         File file = chooser.showSaveDialog(new Stage());
         if(file == null){
+            messageArea.appendText("No File Selected!\n");
             return ;
         }
         String path = file.getAbsolutePath();
@@ -593,6 +599,7 @@ public class Controller {
         String path = getPath();
 
         if(path == null){
+            messageArea.appendText("No File Selected!\n");
             return;
         }
 
