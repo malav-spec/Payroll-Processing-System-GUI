@@ -40,7 +40,7 @@ public class Management extends Fulltime{
      * @param number Value which we want to round off
      * @return value after rounding off the number
      */
-    public double roundOff(double number){ //rounds off a number to two decimal places
+    private double roundOff(double number){ //rounds off a number to two decimal places
         return Math.round(number * 100.0) / 100.0;
     }
 

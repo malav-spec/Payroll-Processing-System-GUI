@@ -17,10 +17,18 @@ public class Employee {
     public Employee(){
     }
 
+    /**
+     * Used to get Profile
+     * @return Returns Profile object
+     */
     public Profile getProfile(){
         return profile;
     }
 
+    /**
+     *Used to set profile value for instance variable
+     * @param p Profile Object Passed as argument
+     */
     public void setProfile(Profile p){
         this.profile = p;
     }
