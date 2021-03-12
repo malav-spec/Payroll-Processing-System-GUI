@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane id="borderPane" fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.SystemController">
+<BorderPane id="borderPane" fx:id="layout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="system.SystemController">
     <top>
         <TabPane prefHeight="421.0" prefWidth="768.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
@@ -182,18 +182,11 @@
                                     <GridPane.margin>
                                         <Insets left="40.0" />
                                     </GridPane.margin></Button>
-                                <ComboBox fx:id="printBox" onAction="#printFunctions" prefHeight="26.0" prefWidth="128.0" promptText="Print Functions" GridPane.rowIndex="7">
-                                    <GridPane.margin>
+                                <Button fx:id="clearButton" mnemonicParsing="false" onAction="#resetFields" prefHeight="26.0" prefWidth="58.0" text="Clear" GridPane.rowIndex="7">
+                                <GridPane.margin>
                                         <Insets left="30.0" />
-                                    </GridPane.margin>
-                                    <items>
-                                        <FXCollections fx:factory="observableArrayList">
-                                            <String fx:id="printall" fx:value="Print All" />
-                                            <String fx:id="printdate" fx:value="Print By Date Hired" />
-                                            <String fx:id="printdept" fx:value="Print By Department" />
-                                        </FXCollections>
-                                    </items>
-                                </ComboBox>
+                                    </GridPane.margin></Button>
+
                                 <FlowPane prefHeight="46.0" prefWidth="483.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                     <GridPane.margin>
                                         <Insets left="160.0" />
@@ -225,11 +218,6 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="193.0" layoutY="27.0" prefHeight="48.0" prefWidth="354.0" text="Select Command from below" AnchorPane.bottomAnchor="330.0" AnchorPane.rightAnchor="221.0">
-                                    <font>
-                                        <Font name="Times New Roman Bold" size="25.0" />
-                                    </font>
-                                </Label>
                                 <ComboBox fx:id="fileBox" layoutX="232.0" layoutY="75.0" onAction="#file" prefHeight="26.0" prefWidth="68.0" promptText="File" AnchorPane.leftAnchor="200.0">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
@@ -238,7 +226,24 @@
                                         </FXCollections>
                                     </items>
                                 </ComboBox>
-                                <Button layoutX="358.0" layoutY="75.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Print" AnchorPane.leftAnchor="330.0" />
+                                <ComboBox fx:id="printBox" layoutX="358.0" layoutY="75.0" onAction="#printFunctions" prefHeight="26.0" prefWidth="126.0" promptText="Print Functions">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:id="printall" fx:value="Print All" />
+                                            <String fx:id="printdate" fx:value="Print By Date Hired" />
+                                            <String fx:id="printdept" fx:value="Print By Department" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                        <Pane prefHeight="65.0" prefWidth="768.0">
+                           <children>
+                                      <Label alignment="CENTER" layoutX="182.0" layoutY="17.0" prefHeight="48.0" prefWidth="354.0" text="Select Command from below">
+                                          <font>
+                                              <Font name="Times New Roman Bold" size="25.0" />
+                                          </font>
+                                      </Label>
+                           </children>
+                        </Pane>
                             </children></AnchorPane>
                     </content>
                 </Tab>

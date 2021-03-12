@@ -132,33 +132,38 @@ public class SystemController {
      */
     @FXML
     public void resetFields(){
+        try{
+            salaryTextField.clear();
+            salaryTextField.setDisable(false);
 
-        salaryTextField.clear();
-        salaryTextField.setDisable(false);
+            hoursTextField.clear();
+            hoursTextField.setDisable(false);
 
-        hoursTextField.clear();
-        hoursTextField.setDisable(false);
+            payrateTextField.clear();
+            payrateTextField.setDisable(false);
 
-        payrateTextField.clear();
-        payrateTextField.setDisable(false);
+            nameField.clear();
 
-        nameField.clear();
+            dateField.getEditor().clear();
+            dateField.setValue(null);
 
-        dateField.getEditor().clear();
-        dateField.setValue(null);
+            SET_HOURS = 0;
 
-        SET_HOURS = 0;
+            group.getSelectedToggle().setSelected(false);
+            employeeGroup.getSelectedToggle().setSelected(false);
 
-        group.getSelectedToggle().setSelected(false);
-        employeeGroup.getSelectedToggle().setSelected(false);
+            if(roles.getSelectedToggle() != null) {
+                roles.getSelectedToggle().setSelected(false);
+            }
 
-        if(roles.getSelectedToggle() != null) {
-            roles.getSelectedToggle().setSelected(false);
+            managerButton.setDisable(false);
+            deptheadButton.setDisable(false);
+            directorButton.setDisable(false);
+        }
+        catch (RuntimeException ex){
+            return;
         }
 
-        managerButton.setDisable(false);
-        deptheadButton.setDisable(false);
-        directorButton.setDisable(false);
     }
 
     /**
@@ -397,7 +402,6 @@ public class SystemController {
 
     /**
      * Used to check if the name is in valid format
-     * @author Malav Doshi and Herik Patel
      * @return True if valid name format. False otherwise.
      */
     private boolean checkName(){
