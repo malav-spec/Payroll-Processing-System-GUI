@@ -1,3 +1,4 @@
+
 package model;
 import java.io.File;
 import java.io.FileWriter;
@@ -275,6 +276,7 @@ public class Company {
         return date_to_string;
     }
     /**
+     * Used to get number of employees in Company
      * @return The number of employees in the database
      */
     public int getNumEmployee(){

@@ -1,3 +1,4 @@
+
 package model;
 
 /**
@@ -42,8 +43,10 @@ public class Employee {
         profile = new Profile(profileIn.getName(), profileIn.getDepartment(), profileIn.getDateHired());
     }
 
+
     /**
-     *This method is overridden in child classes
+     * This method is overridden in child classes
+     * @return 0.0 We are overriding this method
      */
     public double getPayment(){
         return 0.0;

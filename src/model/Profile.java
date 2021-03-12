@@ -1,3 +1,4 @@
+
 package model;
 
 /**
@@ -78,7 +79,7 @@ public class Profile {
     }
 
     /**
-     *
+     * Used to return Profile object as String
      * @return A string with all the information of an employee's profile
      */
     @Override
@@ -88,7 +89,7 @@ public class Profile {
 
 
     /**
-     *
+     * Used to compare profile objects
      * @param obj Object to compare
      * @return Compares two Profile objects to see of its equal
      */

@@ -1,3 +1,4 @@
+
 package model;
 
 /**
@@ -34,7 +35,6 @@ public class Management extends Fulltime{
         super(profile, salary);
         this.role = role;
     }
-
     /**
      *This method is used to round off a number to two decimal places
      * @param number Value which we want to round off

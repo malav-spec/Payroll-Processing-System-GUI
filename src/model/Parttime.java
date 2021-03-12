@@ -1,3 +1,4 @@
+
 package model;
 
 /**
@@ -30,6 +31,8 @@ public class Parttime extends Employee{
 
     /**
      * Constructor for the class Parttime used to instantiate values
+     * @param profile Profile object passed in argument
+     * @param hourlyPayRate Hourly payrate of part time employee
      */
     public Parttime(Profile profile, double hourlyPayRate){
         super(profile);
