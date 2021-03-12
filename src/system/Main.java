@@ -1,3 +1,4 @@
+
 package system;
 
 import javafx.application.Application;
@@ -7,9 +8,17 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
+ * Main class to run the Program
  * @author Malav Doshi and Herik Patel
  */
 public class Main extends Application {
+
+    /**
+     * Default constructor for Main class
+     */
+    public Main(){
+
+    }
 
     /**
      * Method to start the GUI window

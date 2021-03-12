@@ -1,3 +1,4 @@
+
 package system;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -91,6 +92,12 @@ public class SystemController {
      */
     int SET_HOURS = 0;
 
+    /**
+     * Default Constructor for System Class
+     */
+    public SystemController(){
+
+    }
     /**
      * Disables fields according to selection of employee type
      */
