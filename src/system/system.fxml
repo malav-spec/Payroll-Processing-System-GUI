@@ -218,7 +218,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <ComboBox fx:id="fileBox" layoutX="232.0" layoutY="75.0" onAction="#file" prefHeight="26.0" prefWidth="68.0" promptText="File" AnchorPane.leftAnchor="200.0">
+                                <ComboBox fx:id="fileBox" layoutX="232.0" layoutY="75.0" onAction="#file" prefHeight="26.0" prefWidth="81.0" promptText="File" AnchorPane.leftAnchor="200.0">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
                                             <String fx:id="import" fx:value="Import" />
@@ -235,15 +235,15 @@
                                         </FXCollections>
                                     </items>
                                 </ComboBox>
-                        <Pane prefHeight="65.0" prefWidth="768.0">
+                        <HBox alignment="CENTER" layoutX="6.0" prefHeight="54.0" prefWidth="768.0">
                            <children>
-                                      <Label alignment="CENTER" layoutX="182.0" layoutY="17.0" prefHeight="48.0" prefWidth="354.0" text="Select Command from below">
+                                      <Label alignment="CENTER" prefHeight="48.0" prefWidth="354.0" text="Select Command from below">
                                           <font>
                                               <Font name="Times New Roman Bold" size="25.0" />
                                           </font>
                                       </Label>
                            </children>
-                        </Pane>
+                        </HBox>
                             </children></AnchorPane>
                     </content>
                 </Tab>

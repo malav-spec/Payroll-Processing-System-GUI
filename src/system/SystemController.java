@@ -564,7 +564,7 @@ public class SystemController {
     @FXML
     public void remove(){
 
-        if(!checkValues()){
+        if(!checkValForRemove()){
             return;
         }
 
@@ -594,15 +594,53 @@ public class SystemController {
     }
 
     /**
+     * Used to check user input values for remove function
+     * @return False is values are not in correct format else returns True
+     */
+    private boolean checkValForRemove(){
+
+
+        if(nameField.getText().equals("")){
+            messageArea.appendText("Enter a name.\n");
+            return false;
+        }
+        if(!checkName()){
+            messageArea.appendText("Enter name in a proper format.\n");
+            return false;
+        }
+        if(group.getSelectedToggle() == null){
+            messageArea.appendText("Select a department.\n");
+            return false;
+        }
+
+        if(employeeGroup.selectedToggleProperty() == null){
+            messageArea.appendText("Select employee type.\n");
+            return false;
+        }
+
+        if(!checkDate()){
+            messageArea.appendText("Select a valid hiring date.\n");
+            return false;
+        }
+
+        return true;
+
+    }
+    /**
      * Used to check user response whether a user wants to import or export the file
      */
     @FXML
     public void file(){
         if(fileBox.getValue().equals("Export")){
+            if(company.getNumEmployee() == 0){
+                messageArea.appendText("Employee database empty!\n");
+                return;
+            }
             fileExport();
         }
         else if(fileBox.getValue().equals("Import")){
             fileImport();
+
         }
 
     }
@@ -615,10 +653,12 @@ public class SystemController {
         chooser.setTitle("Save File");
         File file = chooser.showSaveDialog(new Stage());
         if(file == null){
+            messageArea.appendText("No File Selected\n");
             return ;
         }
         String path = file.getAbsolutePath();
         company.exportDatabase(path);
+        messageArea.appendText("File Exported\n");
     }
 
 
@@ -629,6 +669,7 @@ public class SystemController {
         String path = getPath();
 
         if(path == null){
+            messageArea.appendText("No File Selected\n");
             return;
         }
 
@@ -657,6 +698,8 @@ public class SystemController {
         }
         catch (FileNotFoundException e) {
         }
+        messageArea.appendText("File Imported\n");
+
 
     }
 
