@@ -205,7 +205,7 @@ public class SystemController {
                 Fulltime management = new Management(profile, getSalary(), getRole());
 
                 if(company.add(management)){
-                    messageArea.appendText("Employee added.");
+                    messageArea.appendText("Employee added.\n");
                 }
                 else{
                     messageArea.appendText("Employee is already in the list.");
