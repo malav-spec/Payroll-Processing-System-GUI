@@ -8,7 +8,7 @@ public class Profile {
     /**
      * Represents Name of the employee
      */
-    private String name; //employee’s name in the form “lastname,firstname”
+    private String name; //employee’s name in the form lastname,firstname
     /**
      * Represents Department of the employee
      */
@@ -79,20 +79,28 @@ public class Profile {
 
     /**
      *
-     * @return
+     * @return A string with all the information of an employee's profile
      */
     @Override
     public String toString() {
-        return null;
+        return this.name + "::" + this.department + "::" + this.dateHired.getMonth() + "/" + this.dateHired.getDay() + "/" + this.dateHired.getYear();
     }
+
 
     /**
      *
-     * @param obj
-     * @return
+     * @param obj Object to compare
+     * @return Compares two Profile objects to see of its equal
      */
     @Override
     public boolean equals(Object obj) {
+        if(obj instanceof Profile){
+
+            Profile p = (Profile) obj;
+            if(this.name.equals(p.name) && this.dateHired.equals(p.dateHired) && this.department.equals(p.department)){
+                return true;
+            }
+        }
         return false;
     }
 }

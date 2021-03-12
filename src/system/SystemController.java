@@ -1,6 +1,5 @@
-package sample;
+package system;
 import javafx.fxml.FXML;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
@@ -14,7 +13,6 @@ import model.Company;
 import model.Fulltime;
 import model.Parttime;
 import model.Profile;
-import model.Employee;
 import model.Management;
 import model.Date;
 import java.io.File;
@@ -59,9 +57,6 @@ public class SystemController {
     @FXML
     private TextField nameField;
 
-//    @FXML
-//    private RadioButton parttimeButton, fulltimeButton, managementButton;
-
     /**
      * Reference to the Text field of salary, hours and payrate respectively
      */
@@ -91,26 +86,16 @@ public class SystemController {
      */
     Company company = new Company();
 
+    /**
+     * A counter to check if setHours button is clicked
+     */
     int SET_HOURS = 0;
-
-// need to remove method redundant
-    @FXML
-    public void display(ActionEvent actionEvent) { //Just for reference
-        RadioButton rb = (RadioButton) group.getSelectedToggle();
-        messageArea.setText(rb.getText());
-        LocalDate d = dateField.getValue();
-        messageArea.appendText(" " + d.getDayOfMonth()); //Gives the day
-        messageArea.appendText(" " + d.getYear()); //Gives year
-        messageArea.appendText(" " + d.getMonthValue()); //Gives month
-        messageArea.appendText(" " + nameField.getText());
-    }
 
     /**
      * Disables fields according to selection of employee type
-     * @param event Not used
      */
     @FXML
-    public void disableOptions(ActionEvent event){
+    public void disableOptions(){
         RadioButton temp = (RadioButton) employeeGroup.getSelectedToggle();
         String employeeType = temp.getText();
 
@@ -178,11 +163,10 @@ public class SystemController {
 
     /**
      * Add the employee to the database
-     * @param event Not used
      */
     @FXML
-    public void addEmployee(ActionEvent event){
-        if(checkValues(null)){
+    public void addEmployee(){
+        if(checkValues()){
 
             Profile profile = new Profile(nameField.getText(), getDepartment(), getDate());
             RadioButton temp = (RadioButton) employeeGroup.getSelectedToggle();
@@ -236,12 +220,12 @@ public class SystemController {
             return;
         }
 
-        Employee[] temp = company.printByDepartment();
+        String[] temp = company.printByDepartment();
 
         messageArea.appendText("--Printing earning statements by department--\n");
 
         for(int i = 0; i < company.getNumEmployee(); i++){
-            messageArea.appendText(temp[i].toString() + "\n");
+            messageArea.appendText(temp[i] + "\n");
         }
     }
 
@@ -255,11 +239,11 @@ public class SystemController {
             return;
         }
 
-        Employee[] temp = company.printByDate();
+        String[] temp = company.printByDate();
 
         messageArea.appendText("--Printing earning statements by date hired--\n");
         for(int i = 0; i < company.getNumEmployee(); i++){
-            messageArea.appendText(temp[i].toString() + "\n");
+            messageArea.appendText(temp[i] + "\n");
         }
     }
 
@@ -273,21 +257,20 @@ public class SystemController {
             return;
         }
 
-        Employee[] temp = company.print();
+        String[] temp = company.print();
 
         messageArea.appendText("--Printing Earning statements for all employees--\n");
 
         for(int i = 0; i < company.getNumEmployee(); i++){
-            messageArea.appendText(temp[i].toString() + "\n");
+            messageArea.appendText(temp[i] + "\n");
         }
     }
 
     /**
      * Function associated with the ComboBox for Print functions
-     * @param event
      */
     @FXML
-    public void printFunctions(ActionEvent event){
+    public void printFunctions(){
 
         if(printBox.getValue().equals("Print By Date Hired")){
             printByDateHired();
@@ -302,11 +285,10 @@ public class SystemController {
 
     /**
      * Checks if the input fields are valid
-     * @param event Not used
      * @return False if there are any invalid inputs. True otherwise
      */
     @FXML
-    public boolean checkValues(ActionEvent event){
+    private boolean checkValues(){
 
         if(nameField.getText().equals("")){
             messageArea.appendText("Enter a name.\n");
@@ -418,7 +400,7 @@ public class SystemController {
      * @author Malav Doshi and Herik Patel
      * @return True if valid name format. False otherwise.
      */
-    public boolean checkName(){
+    private boolean checkName(){
         StringTokenizer st = new StringTokenizer(nameField.getText(),",",false);
 
         if(st.countTokens() != 2){
@@ -535,7 +517,7 @@ public class SystemController {
 
         SET_HOURS = 1;
 
-        if(!checkValues(null)){
+        if(!checkValues()){
             return;
         }
 
@@ -578,7 +560,7 @@ public class SystemController {
     @FXML
     public void remove(){
 
-        if(!checkValues(null)){
+        if(!checkValues()){
             return;
         }
 

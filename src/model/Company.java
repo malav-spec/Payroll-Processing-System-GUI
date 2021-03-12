@@ -41,8 +41,8 @@ public class Company {
      * @return index of the result or -1 if the element is not in the array
      */
     private int find(Employee employee) {
-        int i;
-        for(i=0;i<numEmployee;i++){
+
+        for(int i=0;i<numEmployee;i++){
             if(emplist[i].equals(employee)){
                 return i;
             }
@@ -57,9 +57,8 @@ public class Company {
     private void grow() {
 
         Employee[] temp = new Employee[emplist.length + INCREASE_SIZE]; //Declare and initialize a temp array of length +4 than original one
-        int i;
 
-        for(i=0;i < emplist.length;i++){
+        for(int i=0;i < emplist.length;i++){
             temp[i] = emplist[i]; //Transfer elements to the new array
         }
 
@@ -159,20 +158,24 @@ public class Company {
 
     /**
      * Prints the database of the employees in its current order
-     * @author Herik Patel anf Malav Doshi
      * @return Returns the array of employees
      */
-    public Employee[] print() {
-        return emplist;
+    public String[] print() {
+        String[] list = new String[numEmployee];
+
+        for(int i = 0; i < numEmployee; i++){
+            list[i] = emplist[i].toString();
+        }
+        return list;
     } //print earning statements for all employees
 
     /**
      *Prints the earning statement of the employees in the order of their department
-     * @author Malav Doshi and Herik Patel
      * @return Returns the array of employees sorted by Department
      */
-    public Employee[] printByDepartment() {
+    public String[] printByDepartment() {
 
+        String[] list = new String[numEmployee];
 
         for(int i = 0; i < numEmployee - 1; i++){
 
@@ -188,24 +191,32 @@ public class Company {
             }
         }
 
-        return emplist;
+        for(int i = 0; i < numEmployee; i++){
+            list[i] = emplist[i].toString();
+        }
+
+        return list;
     } //print earning statements by department
 
     /**
      *Prints the earning statement of the employees in the order of their date hired
-     * @author Malav Doshi and Herik Patel
      * @return Returns the array of employees sorted by Date hired
      */
-    public Employee[] printByDate() {
+    public String[] printByDate() {
 
-        emplist = sortedarray();
-        return emplist;
+        String[] list = new String[numEmployee];
+        emplist = sortedArray();
+
+        for(int i = 0; i < numEmployee; i++){
+            list[i] = emplist[i].toString();
+        }
+        return list;
     }
     /**
      * Used to sort the Employee array by date
      * @return Employee array which is sorted by dates
      */
-    private Employee[] sortedarray() //Returns an sorted array
+    private Employee[] sortedArray() //Returns an sorted array
     {
         Employee[] temp = emplist;
         Employee swap_obj = new Employee();
@@ -221,7 +232,6 @@ public class Company {
             {
                 date1 = checkDate(min_index,temp);  // Takes the date and turns it into a string value
                 date2 = checkDate(j,temp);
-                //  date2=""+temp[j].getDatePublished().getYear()+temp[j].getDatePublished().getMonth()+temp[j].getDatePublished().getDay();
                 int int_date1= Integer.parseInt(date1);
                 int int_date2= Integer.parseInt(date2);
                 if(int_date2<int_date1)
@@ -246,17 +256,17 @@ public class Company {
     private String checkDate(int index,Employee[] temp)
     {
         String date_to_string = ""+temp[index].getProfile().getDateHired().getYear();
-        if(temp[index].getProfile().getDateHired().getMonth()<10)
+        if(temp[index].getProfile().getDateHired().getMonth() < 10)
         {
-            date_to_string=date_to_string+"0"+temp[index].getProfile().getDateHired().getMonth();
+            date_to_string = date_to_string+ "0"+ temp[index].getProfile().getDateHired().getMonth();
         }
         else
         {
             date_to_string=date_to_string+temp[index].getProfile().getDateHired().getMonth();
         }
-        if(temp[index].getProfile().getDateHired().getDay()<10)
+        if(temp[index].getProfile().getDateHired().getDay() < 10)
         {
-            date_to_string=date_to_string+"0"+temp[index].getProfile().getDateHired().getDay();
+            date_to_string = date_to_string+ "0"+ temp[index].getProfile().getDateHired().getDay();
         }
         else
         {
@@ -265,7 +275,6 @@ public class Company {
         return date_to_string;
     }
     /**
-     * @author Malav Doshi and Herik Patel
      * @return The number of employees in the database
      */
     public int getNumEmployee(){
