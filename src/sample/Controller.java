@@ -296,6 +296,10 @@ public class Controller {
             messageArea.appendText("Enter a name.\n");
             return false;
         }
+        if(!checkName()){
+            messageArea.appendText("Enter proper name format.\n");
+            return false;
+        }
         if(group.getSelectedToggle() == null){
             messageArea.appendText("Select a department.\n");
             return false;
@@ -390,6 +394,29 @@ public class Controller {
             }
         }
 
+        return true;
+    }
+
+    /**
+     * Used to check if the name is in valid format
+     * @author Malav Doshi and Herik Patel
+     * @return True if valid name format. False otherwise.
+     */
+    public boolean checkName(){
+        StringTokenizer st = new StringTokenizer(nameField.getText(),",",false);
+
+        if(st.countTokens() != 2){
+            return false;
+        }
+
+        while(st.hasMoreTokens()){
+            String temp = st.nextToken();
+            for(int i = 0; i < temp.length(); i++){
+                if(!Character.isLetter(temp.charAt(i))){
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
